@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity
         } else {
             new AlertDialog.Builder(this)
                     .setIcon(android.R.drawable.ic_dialog_alert)
-                    .setTitle("Quit SimpleWeather")
+                    .setTitle("Quit Scoot Racer")
                     .setMessage("Are you sure you want to quit?")
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener()
                     {
@@ -117,11 +117,19 @@ public class MainActivity extends AppCompatActivity
         switch (viewId) {
             case R.id.nav_daily_forecast:
                 fragment = DailyFragment.newInstance(cityName);
-                title = "Daily";
+                title = "Home";
                 break;
-            case R.id.nav_weekly_forecast:
-                fragment = WeeklyFragment.newInstance(cityName);
-                title = "Weekly";
+            case R.id.nav_friends:
+                fragment = new FriendsFragment();
+                title = "Friends";
+                break;
+            case R.id.nav_race:
+                fragment = DailyFragment.newInstance(cityName);
+                title = "Race";
+                break;
+            case R.id.nav_ranking:
+                fragment = DailyFragment.newInstance(cityName);
+                title = "Ranking";
                 break;
             case  R.id.nav_settings:
                 fragment = new SettingsFragment();

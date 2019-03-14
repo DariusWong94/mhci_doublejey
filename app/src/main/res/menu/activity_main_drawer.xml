@@ -4,11 +4,21 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_daily_forecast"
-            android:title="Daily Forecast" />
+            android:icon="@drawable/zzz_home"
+            android:title="Home" />
         <item
-            android:id="@+id/nav_weekly_forecast"
-            android:title="Weekly Forecast" />
+            android:id="@+id/nav_friends"
+            android:icon="@drawable/zzz_people"
+            android:title="Friends" />
         <item
+            android:id="@+id/nav_race"
+            android:icon="@drawable/zzz_flag_checkered"
+            android:title="Race" />
+        <item
+            android:id="@+id/nav_ranking"
+            android:icon="@drawable/zzz_trophy_outline"
+            android:title="Ranking" />
+          <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/zzz_settings"
             android:title="Settings" />
