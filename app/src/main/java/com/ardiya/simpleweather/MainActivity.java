@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -44,10 +45,14 @@ public class MainActivity extends AppCompatActivity
     private SparseIntArray mErrorString = new SparseIntArray();
     private static final int REQUEST_PERMISSIONS = 20;
 
+    private static  int SPLASH_TIME_OUT = 4000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+
+
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
