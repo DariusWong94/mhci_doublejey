@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity
                 title = "Race";
                 break;
             case R.id.nav_ranking:
-                fragment = DailyFragment.newInstance(cityName);
+                fragment = new RankFragment();
                 title = "Ranking";
                 break;
             case  R.id.nav_settings:
