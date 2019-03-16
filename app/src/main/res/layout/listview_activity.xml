@@ -32,5 +32,26 @@
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
             android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:padding="7dp">
+        <Button
+            android:id="@+id/list_item_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Add Friend" />
+        <Button
+            android:id="@+id/list_item_btn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Remove" />
+        </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>

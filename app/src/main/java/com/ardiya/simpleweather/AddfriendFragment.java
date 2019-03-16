@@ -32,26 +32,38 @@ public class AddfriendFragment extends Fragment {
 
 
         String[] listviewTitle = new String[]{
-                "ListView Title 1", "ListView Title 2", "ListView Title 3", "ListView Title 4",
-                "ListView Title 5", "ListView Title 6", "ListView Title 7", "ListView Title 8",
+                "User 1",
+                "User 2",
+                "User 3",
+                "User 4",
+                "User 5",
+                "User 6"
         };
 
 
         int[] listviewImage = new int[]{
-                R.drawable.zzz_face_profile, R.drawable.zzz_face_profile, R.drawable.zzz_face_profile, R.drawable.zzz_face_profile,
-                R.drawable.zzz_face_profile, R.drawable.zzz_face_profile, R.drawable.zzz_face_profile, R.drawable.zzz_face_profile,
+                R.drawable.profile,
+                R.drawable.profile,
+                R.drawable.profile,
+                R.drawable.profile,
+                R.drawable.profile,
+                R.drawable.profile
         };
 
         String[] listviewShortDescription = new String[]{
-                "Android ListView Short Description", "Android ListView Short Description", "Android ListView Short Description", "Android ListView Short Description",
-                "Android ListView Short Description", "Android ListView Short Description", "Android ListView Short Description", "Android ListView Short Description",
+                "Hi, how are you?",
+                "I like banana",
+                "I like apples",
+                "Hey there",
+                "Whats up?",
+                "I like peach",
         };
 
         View view = inflater.inflate(R.layout.fragment_addfriend, container, false);
 
         List<HashMap<String, String>> aList = new ArrayList<HashMap<String, String>>();
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < listviewTitle.length ; i++) {
             HashMap<String, String> hm = new HashMap<String, String>();
             hm.put("listview_title", listviewTitle[i]);
             hm.put("listview_discription", listviewShortDescription[i]);
@@ -66,14 +78,6 @@ public class AddfriendFragment extends Fragment {
         ListView androidListView = (ListView) view.findViewById(R.id.listview);
         androidListView.setAdapter(simpleAdapter);
 
-//        ListView listView = (ListView) view.findViewById(R.id.listview);
-//
-//        String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
-//                "Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-//                "Linux", "OS/2" };
-//        ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, values);
-//
-//        listView.setAdapter(adapter);
 
         return view;
     }

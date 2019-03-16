@@ -28,27 +28,29 @@ public class RankFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_rank, container, false);
+
         String[] listviewTitle = new String[]{
-                "ListView Title 1", "ListView Title 2", "ListView Title 3", "ListView Title 4",
-                "ListView Title 5", "ListView Title 6", "ListView Title 7", "ListView Title 8",
+                "ListView Title 1", "ListView Title 2", "ListView Title 3", "ListView Title 4", "ListView Title 10",
+                "ListView Title 5", "ListView Title 6", "ListView Title 7", "ListView Title 8", "ListView Title 9"
         };
 
 
         int[] listviewImage = new int[]{
-                R.drawable.rankusers, R.drawable.rankusers, R.drawable.rankusers, R.drawable.rankusers,
-                R.drawable.rankusers, R.drawable.rankusers, R.drawable.rankusers, R.drawable.rankusers,
+                R.drawable.rankusers, R.drawable.rankusers, R.drawable.rankusers, R.drawable.rankusers, R.drawable.rankusers,
+                R.drawable.rankusers, R.drawable.rankusers, R.drawable.rankusers, R.drawable.rankusers, R.drawable.rankusers
         };
 
         String[] listviewShortDescription = new String[]{
-                "Android ListView Short Description", "Android ListView Short Description", "Android ListView Short Description", "Android ListView Short Description",
-                "Android ListView Short Description", "Android ListView Short Description", "Android ListView Short Description", "Android ListView Short Description",
+                "Android ListView Short Description", "Android ListView Short Description", "Android ListView Short Description", "Android ListView Short Description", "Android ListView Short Description",
+                "Android ListView Short Description", "Android ListView Short Description", "Android ListView Short Description", "Android ListView Short Description", "Android ListView Short Description",
         };
 
-        View view = inflater.inflate(R.layout.fragment_addfriend, container, false);
+
 
         List<HashMap<String, String>> aList = new ArrayList<HashMap<String, String>>();
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < listviewTitle.length ; i++) {
             HashMap<String, String> hm = new HashMap<String, String>();
             hm.put("listview_title", listviewTitle[i]);
             hm.put("listview_discription", listviewShortDescription[i]);
