@@ -30,10 +30,6 @@ public class MpagerAdapter extends FragmentStatePagerAdapter {
                 return DailyFragment.newInstance(cityName);
             case 1:
                 return new SpeedometerFragment();
-            case 2:
-                return new FriendRequestFragment();
-            case 3:
-                return new MyFriendFragment();
             default:
                 return null;
         }
@@ -42,5 +38,13 @@ public class MpagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         return mNumOfTabs;
+    }
+
+    private static class Item {
+        private final int color;
+
+        private Item(int color) {
+            this.color = color;
+        }
     }
 }

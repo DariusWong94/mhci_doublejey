@@ -3,50 +3,107 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:fitsSystemWindows="true">
-
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".RoutingFragment">
-
-
-
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+    android:layout_height="fill_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_height="fill_parent"
+        android:layout_width="wrap_content"
+        android:weightSum="1.0"
+        android:layout_alignParentRight="true">
+        <LinearLayout
+            android:layout_weight="0.5"
+            android:layout_height="0dp"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:layout_collapseMode="pin"
-            app:layout_scrollFlags="scroll|enterAlways"/>
-
-
-        <!-- TODO: Update blank fragment layout -->
-        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-            class="com.google.android.gms.maps.SupportMapFragment"
-            android:id="@+id/map"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
+            >
+            <!-- TODO: Update blank fragment layout -->
+            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                class="com.google.android.gms.maps.SupportMapFragment"
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="0.5"
+            android:layout_height="0dp"
             android:layout_width="match_parent"
-            android:layout_height="650dp"/>
+            android:orientation="horizontal">
 
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/fragstopwatch"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                tools:context="StopWatchFragment"
+                android:background="@null">
 
+                <TextView
+                    android:text="00:00:00"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView"
+                    android:textSize="50dp"
+                    android:textStyle="bold"
+                    android:textColor="#009688"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" />
 
+                <ImageButton
+                    android:text="Start"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_below="@+id/textView"
+                    android:id="@+id/startbutton"
+                    android:scaleType="fitCenter"
+                    android:background="@null"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/start"/>
 
-</LinearLayout>
-        <FrameLayout
-            android:id="@+id/nav_container"
-            android:layout_gravity="start"
-            android:layout_width="240dp"
-            android:layout_height="fill_parent"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="80dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_toRightOf="@+id/startbutton"
+                    android:id="@+id/besttextview"/>
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/linearhorn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:orientation="horizontal" >
 
+                    <ImageButton
+                        android:id="@+id/horn"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_alignParentLeft="true"
+                        android:adjustViewBounds="true"
+                        android:layout_marginLeft="20dp"
+                        android:scaleType="fitCenter"
+                        android:background="@null"
+                        android:src="@drawable/horn" />
 
+                    <ImageButton
+                        android:id="@+id/emergency"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:scaleType="fitCenter"
+                        android:onClick="makePhoneCall"
+                        android:layout_marginRight="20dp"
+                        android:layout_alignParentRight="true"
+                        android:background="@null"
+                        android:src="@drawable/ambulance" />
+                </RelativeLayout>
+            </RelativeLayout>
 
+        </LinearLayout>
+    </LinearLayout>
 </android.support.v4.widget.DrawerLayout>

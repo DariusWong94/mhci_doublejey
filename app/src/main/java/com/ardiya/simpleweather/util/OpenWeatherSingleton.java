@@ -55,7 +55,7 @@ public class OpenWeatherSingleton {
 
     public int getIconFromWeather(String weather){
         weather = weather.toLowerCase();
-        if(weather.contains("cloud")) return R.drawable.zzz_weather_cloudy;
+        if(weather.contains("cloud")) return R.drawable.cloud;
         else if(weather.contains("snow")) return R.drawable.zzz_weather_snowy;
         else if(weather.contains("rain") || weather.contains("drizzle")) return R.drawable.zzz_weather_rainy;
         else if(weather.contains("fog")) return R.drawable.zzz_weather_fog;

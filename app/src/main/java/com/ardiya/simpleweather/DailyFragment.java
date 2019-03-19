@@ -144,10 +144,9 @@ private static final String ARG_CITY = "param1";
 
                             }else{
                                 textCity.setText(obj.getString("name"));
-                                String weather = obj.getJSONArray("weather").
-                                        getJSONObject(0).getString("main");
-                                ivWeather.setImageResource(OpenWeatherSingleton.getInstance()
-                                        .getIconFromWeather(weather));
+                                String weather = obj.getJSONArray("weather").getJSONObject(0).getString("main");
+                                ivWeather.setImageResource(OpenWeatherSingleton.getInstance().getIconFromWeather(weather));
+                                System.out.println("==================================" + weather + "===============================================");
                                 JSONObject temp = obj.getJSONObject("main");
                                 textTemp.setText(String.format("%s°C", temp.getString("temp")));
                                 textTempMax.setText(String.format("%s°C", temp.getString("temp_max")));

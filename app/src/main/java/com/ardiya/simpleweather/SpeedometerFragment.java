@@ -47,16 +47,16 @@ public class SpeedometerFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_speedometer, container, false);
-        bt = (ImageButton) view.findViewById(R.id.horn);
-        bt2 =(ImageButton) view.findViewById(R.id.emergency);
-        final MediaPlayer mp = MediaPlayer.create(this.getContext(), R.raw.bike);
-
-        bt.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                mp.start();
-            }
-        });
+//        bt = (ImageButton) view.findViewById(R.id.horn);
+//        bt2 =(ImageButton) view.findViewById(R.id.emergency);
+//        final MediaPlayer mp = MediaPlayer.create(this.getContext(), R.raw.bike);
+//
+//        bt.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view){
+//                mp.start();
+//            }
+//        });
 
 
         SpeedView speedometer = (SpeedView) view.findViewById(R.id.speedView);
@@ -70,20 +70,20 @@ public class SpeedometerFragment extends Fragment {
 
     }
 
-    public void btEmemergency_onClick(View view){
-        String number ="12345678";
-        Intent intent = new Intent(Intent.ACTION_CALL);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.setData(Uri.parse("tel:" + number));
-        if(ContextCompat.checkSelfPermission(this.getContext(), android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
-            ActivityCompat.requestPermissions(this.getActivity(), new String[]{android.Manifest.permission.CALL_PHONE},PHONE_CALL_REQUEST);
-        }
-        else
-        {
-            Intent intent2 = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "+1234567"));
-            startActivity(intent2);
-        }
-        }
+//    public void btEmemergency_onClick(View view){
+//        String number ="12345678";
+//        Intent intent = new Intent(Intent.ACTION_CALL);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        intent.setData(Uri.parse("tel:" + number));
+//        if(ContextCompat.checkSelfPermission(this.getContext(), android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
+//            ActivityCompat.requestPermissions(this.getActivity(), new String[]{android.Manifest.permission.CALL_PHONE},PHONE_CALL_REQUEST);
+//        }
+//        else
+//        {
+//            Intent intent2 = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "+1234567"));
+//            startActivity(intent2);
+//        }
+//        }
     }
 
 

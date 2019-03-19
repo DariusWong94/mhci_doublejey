@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_marginTop="50dp"
         android:orientation="horizontal">
 
         <com.github.anastr.speedviewlib.SpeedView
@@ -19,30 +20,5 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal" >
-
-
-        <ImageButton
-            android:id="@+id/horn"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginLeft="40dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            tools:srcCompat="@drawable/horn" />
-
-        <ImageButton
-            android:id="@+id/emergency"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginLeft="40dp"
-            android:onClick="btEmemergency_onClick"
-            android:src="@android:color/holo_red_dark" />
-    </LinearLayout>
 
 </RelativeLayout>

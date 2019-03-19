@@ -1,10 +1,13 @@
 package com.ardiya.simpleweather;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.hardware.camera2.CameraAccessException;
+import android.hardware.camera2.CameraManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -27,9 +30,14 @@ import android.support.v7.widget.Toolbar;
 import android.util.SparseIntArray;
 import android.view.MenuItem;
 import android.view.View;
-
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.hardware.Camera;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import android.hardware.Camera.Parameters;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -45,6 +53,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private SparseIntArray mErrorString = new SparseIntArray();
     private static final int REQUEST_PERMISSIONS = 20;
+
+    private ImageButton buttonEnable;
+    private static final int CAMERA_REQUEST = 50;
+    private boolean flashLightStatus = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,8 +82,54 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //TODO: get the location based on GAPI the first time APP started, then apply it to setting
 
         displayView(R.id.nav_daily_forecast);
+
+        buttonEnable = (ImageButton) findViewById(R.id.flash_light);
+
+        final boolean hasCameraFlash = getPackageManager().
+                hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
+        boolean isEnabled = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                == PackageManager.PERMISSION_GRANTED;
+
+        buttonEnable.setEnabled(!isEnabled);
+        buttonEnable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (hasCameraFlash) {
+                    if (flashLightStatus)
+                        flashLightOff();
+                    else
+                        flashLightOn();
+                } else {
+                    Toast.makeText(MainActivity.this, "No flash available on your device",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+    }
+    private void flashLightOn() {
+        CameraManager cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
+
+        try {
+            String cameraId = cameraManager.getCameraIdList()[0];
+            cameraManager.setTorchMode(cameraId, true);
+            flashLightStatus = true;
+            buttonEnable.setImageResource(R.drawable.flaslight);
+        } catch (CameraAccessException e) {
+        }
     }
 
+    private void flashLightOff() {
+        CameraManager cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
+
+        try {
+            String cameraId = cameraManager.getCameraIdList()[0];
+            cameraManager.setTorchMode(cameraId, false);
+            flashLightStatus = false;
+            buttonEnable.setImageResource(R.drawable.zzz_flashlight);
+        } catch (CameraAccessException e) {
+        }
+    }
 
     @Override
     public void onBackPressed() {
@@ -126,9 +184,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 title = "Friends";
                 break;
             case R.id.nav_race:
-                intent = new Intent(this, RoutingActivity.class);
-                this.startActivity(intent);
-//                fragment = new RoutingFragment();
+//                intent = new Intent(this, RoutingActivity.class);
+//                this.startActivity(intent);
+                fragment = new RoutingFragment();
                 title = "Race";
                 break;
             case R.id.nav_ranking:
@@ -210,6 +268,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             startActivity(intent);
                         }
                     }).show();
+        }
+
+        switch(requestCode) {
+            case CAMERA_REQUEST :
+                if (grantResults.length > 0  &&  grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    buttonEnable.setEnabled(false);
+                } else {
+                    Toast.makeText(MainActivity.this, "Permission Denied for the Camera",
+                            Toast.LENGTH_SHORT).show();
+                }
+                break;
         }
     }
 

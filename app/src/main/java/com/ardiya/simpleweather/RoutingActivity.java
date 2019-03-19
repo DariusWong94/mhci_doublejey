@@ -50,7 +50,10 @@ public class RoutingActivity extends AppCompatActivity  implements OnMapReadyCal
 
         ButterKnife.bind(RoutingActivity.this);
 
-
+        // set the toolbar title
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Race");
+        }
         getDirection = (Button) findViewById(R.id.btnRoute);
         getDirection.setOnClickListener(new View.OnClickListener() {
             @Override
