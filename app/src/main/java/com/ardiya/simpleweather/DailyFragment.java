@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -77,12 +78,21 @@ private static final String ARG_CITY = "param1";
         }
     }
 
+//    private ViewPager mPager;
+//    private int[] layouts = {R.layout.fragment_daily, R.layout.fragment_friend_request};
+//    private MpagerAdapter mpagerAdapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_daily, container, false);
         ButterKnife.bind(this, view);
+
+//        mPager = (ViewPager)findViewById(R.id.viewPager);
+//        mpagerAdapter = new MpagerAdapter(layouts, this);
+//
+//        mPager.setAdapter(mpagerAdapter);
 
         mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

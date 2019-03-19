@@ -13,9 +13,11 @@ import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
@@ -29,8 +31,7 @@ import android.view.View;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final int SETTINGS_CODE = 200;
     @BindView(R.id.toolbar)
@@ -45,28 +46,24 @@ public class MainActivity extends AppCompatActivity
     private SparseIntArray mErrorString = new SparseIntArray();
     private static final int REQUEST_PERMISSIONS = 20;
 
-    private static  int SPLASH_TIME_OUT = 4000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
-
 
         ButterKnife.bind(this);
 
         setSupportActionBar(toolbar);
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
 
         requestAppPermissions(new String[]{
-                    Manifest.permission.INTERNET,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
+                        Manifest.permission.INTERNET,
+                        Manifest.permission.ACCESS_COARSE_LOCATION
                 }, R.string.runtime_permissions_txt
                 , REQUEST_PERMISSIONS);
 
@@ -85,8 +82,7 @@ public class MainActivity extends AppCompatActivity
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .setTitle("Quit Scoot Racer")
                     .setMessage("Are you sure you want to quit?")
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener()
-                    {
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             finish();
@@ -109,19 +105,20 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
     /**
      * Method for changing the the fragment views
      */
     public void displayView(int viewId) {
-
         Fragment fragment = null;
+        Intent intent = null;
         String title = getString(R.string.app_name);
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
         String cityName = sharedPref.getString("pref_key_city_name", "");
 
         switch (viewId) {
             case R.id.nav_daily_forecast:
-                fragment = DailyFragment.newInstance(cityName);
+                fragment = new HomeFragment();
                 title = "Home";
                 break;
             case R.id.nav_friends:
@@ -129,14 +126,16 @@ public class MainActivity extends AppCompatActivity
                 title = "Friends";
                 break;
             case R.id.nav_race:
-                fragment = DailyFragment.newInstance(cityName);
+                intent = new Intent(this, RoutingActivity.class);
+                this.startActivity(intent);
+//                fragment = new RoutingFragment();
                 title = "Race";
                 break;
             case R.id.nav_ranking:
                 fragment = new RankFragment();
                 title = "Ranking";
                 break;
-            case  R.id.nav_settings:
+            case R.id.nav_settings:
                 fragment = new SettingsFragment();
                 title = "Settings";
                 break;
