@@ -31,12 +31,12 @@ public class FriendRequestFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_friend_request, container, false);
         String[] listviewTitle = new String[]{
-                "User 1",
-                "User 2",
-                "User 3",
-                "User 4",
-                "User 5",
-                "User 6"
+                "Halimin Hasim",
+                "Ming Loon",
+                "Jia Le",
+                "Siew Mun",
+                "Dom Tiang",
+                "Darius Wong"
         };
 
 

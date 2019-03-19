@@ -32,12 +32,12 @@ public class AddfriendFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_addfriend, container, false);
         String[] listviewTitle = new String[]{
-                "User 1",
-                "User 2",
-                "User 3",
-                "User 4",
-                "User 5",
-                "User 6"
+                "Halimin Hasim",
+                "Ming Loon",
+                "Jia Le",
+                "Siew Mun",
+                "Dom Tiang",
+                "Darius Wong"
         };
 
 
@@ -50,15 +50,6 @@ public class AddfriendFragment extends Fragment {
                 R.drawable.zzz_person_box
         };
 
-        String[] listviewShortDescription = new String[]{
-                "Hi, how are you?",
-                "I like banana",
-                "I like apples",
-                "Hey there",
-                "Whats up?",
-                "I like peach",
-        };
-
 
 
         List<HashMap<String, String>> aList = new ArrayList<HashMap<String, String>>();
@@ -66,15 +57,14 @@ public class AddfriendFragment extends Fragment {
         for (int i = 0; i < listviewTitle.length ; i++) {
             HashMap<String, String> hm = new HashMap<String, String>();
             hm.put("listview_title", listviewTitle[i]);
-            hm.put("listview_discription", listviewShortDescription[i]);
             hm.put("listview_image", Integer.toString(listviewImage[i]));
             aList.add(hm);
         }
 
-        String[] from = {"listview_image", "listview_title", "listview_discription"};
-        int[] to = {R.id.listview_image, R.id.listview_item_title, R.id.listview_item_short_description};
+        String[] from = {"listview_image", "listview_title"};
+        int[] to = {R.id.listview_image, R.id.listview_item_title};
 
-        SimpleAdapter simpleAdapter = new SimpleAdapter(getActivity(), aList, R.layout.listview_activity, from, to);
+        SimpleAdapter simpleAdapter = new SimpleAdapter(getActivity(), aList, R.layout.listview_addfriends, from, to);
         ListView androidListView = (ListView) view.findViewById(R.id.listview);
         androidListView.setAdapter(simpleAdapter);
 
