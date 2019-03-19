@@ -30,7 +30,7 @@ public class AddfriendFragment extends Fragment {
                              Bundle savedInstanceState) {
 
 
-
+        View view = inflater.inflate(R.layout.fragment_addfriend, container, false);
         String[] listviewTitle = new String[]{
                 "User 1",
                 "User 2",
@@ -42,12 +42,12 @@ public class AddfriendFragment extends Fragment {
 
 
         int[] listviewImage = new int[]{
-                R.drawable.profile,
-                R.drawable.profile,
-                R.drawable.profile,
-                R.drawable.profile,
-                R.drawable.profile,
-                R.drawable.profile
+                R.drawable.zzz_person_box,
+                R.drawable.zzz_person_box,
+                R.drawable.zzz_person_box,
+                R.drawable.zzz_person_box,
+                R.drawable.zzz_person_box,
+                R.drawable.zzz_person_box
         };
 
         String[] listviewShortDescription = new String[]{
@@ -59,7 +59,7 @@ public class AddfriendFragment extends Fragment {
                 "I like peach",
         };
 
-        View view = inflater.inflate(R.layout.fragment_addfriend, container, false);
+
 
         List<HashMap<String, String>> aList = new ArrayList<HashMap<String, String>>();
 

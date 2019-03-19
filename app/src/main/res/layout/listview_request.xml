@@ -10,6 +10,8 @@
         android:id="@+id/listview_image"
         android:layout_width="70dp"
         android:layout_height="70dp"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
         android:contentDescription="@string/app_name"
         android:padding="10dp" />
 
@@ -21,8 +23,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="7dp">
+            android:orientation="vertical">
             <TextView
                 android:id="@+id/listview_item_title"
                 android:layout_width="wrap_content"
@@ -30,21 +31,26 @@
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/listview_item_short_description"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:textSize="12sp" />
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/confirm_btn"
+                    android:layout_marginRight="20dp"
+                    android:text="Confirm"
+                    android:textColor="#000" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/remove_btn"
+                    android:text="Remove"
+                    android:textColor="#000" />
+
+            </LinearLayout>
         </LinearLayout>
-
-        <ImageView
-            android:id="@+id/listview_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/app_name"
-            android:layout_marginLeft="60dp"
-            android:padding="10dp" />
-
     </LinearLayout>
 </LinearLayout>
